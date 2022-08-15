@@ -22,7 +22,7 @@ export const fetchQueriedMovies = query => {
         query,
       },
     })
-    .then(response => response.data)
+    .then(response => response.data.results)
     .catch(error => console.log(error));
 };
 

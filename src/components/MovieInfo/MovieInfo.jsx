@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from '../../utils/fetch-api';
 import s from './MovieInfo.module.css';
+
+const setActiveLinkClass = ({ isActive }) =>
+  isActive ? `${s.navLink} ${s.activeLink}` : s.navLink;
 
 const MovieInfo = () => {
   let { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const location = useLocation();
+
+  console.log(location);
 
   useEffect(() => {
     fetchMovieById(movieId).then(movieDetails => setMovieDetails(movieDetails));
@@ -49,10 +55,14 @@ const MovieInfo = () => {
         <ul className={s.list}>
           Additional information
           <li className={s.item}>
-            <Link to={linkToCast}>Cast</Link>
+            <NavLink to={linkToCast} className={setActiveLinkClass}>
+              Cast
+            </NavLink>
           </li>
           <li className={s.item}>
-            <Link to={linkToReviews}>Reviews</Link>
+            <NavLink to={linkToReviews} className={setActiveLinkClass}>
+              Reviews
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -17,8 +17,6 @@ const CastInfo = () => {
         castDetails.map(el => {
           const profilePath = 'https://image.tmdb.org/t/p' + el['profile_path'];
 
-          console.log(profilePath);
-
           return (
             <li className={s.item}>
               <div className={s.thumb}>

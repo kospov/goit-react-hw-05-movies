@@ -4,3 +4,9 @@
     color: dodgerblue;
     text-decoration: underline;
 }
+
+.item:hover,
+.item:focus {
+    color: #FD779C;
+
+}
