@@ -15,12 +15,16 @@ const CastInfo = () => {
     <ul className={s.list}>
       {castDetails &&
         castDetails.map(el => {
-          const profilePath = 'https://image.tmdb.org/t/p' + el['profile_path'];
+          // const image
 
           return (
             <li className={s.item}>
               <div className={s.thumb}>
-                <img src={profilePath} alt={el.name} className={s.poster} />
+                <img
+                  src={'https://image.tmdb.org/t/p/w500' + el['profile_path']}
+                  alt={el.name}
+                  className={s.poster}
+                />
               </div>
               <h2 className={s.title}>{el.name}</h2>
               <p className={s.character}> Character: {el.character}</p>

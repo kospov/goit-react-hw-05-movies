@@ -15,15 +15,20 @@ const ReviewsInfo = () => {
 
   return (
     <ul className={s.list}>
-      {reviewsDetails &&
+      {reviewsDetails.length !== 0 ? (
         reviewsDetails.map(el => {
           return (
             <li className={s.item}>
               <h2 className={s.title}>Author: {el.author}</h2>
-              <p className={s.content}> {el.content}</p>
+              <p className={s.content}>{el.content}</p>
             </li>
           );
-        })}
+        })
+      ) : (
+        <li className={s.item}>
+          <p className={s.content}>We don't have any reviews for this movie.</p>
+        </li>
+      )}
     </ul>
   );
 };

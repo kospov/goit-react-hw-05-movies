@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useParams, useLocation } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { fetchMovieById } from '../../utils/fetch-api';
 import s from './MovieInfo.module.css';
 
@@ -9,9 +10,9 @@ const setActiveLinkClass = ({ isActive }) =>
 const MovieInfo = () => {
   let { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const location = useLocation();
+  // const location = useLocation();
 
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     fetchMovieById(movieId).then(movieDetails => setMovieDetails(movieDetails));
@@ -29,7 +30,9 @@ const MovieInfo = () => {
         <div className={s.containerMovie}>
           <div className={s.thumb}>
             <img
-              src="https://image.tmdb.org/t/p/qpH6z1e4Lm9O4vWClSfDzSxPnqd.jpg"
+              src={
+                'https://image.tmdb.org/t/p/w500' + movieDetails['poster_path']
+              }
               alt={movieDetails.title}
               className={s.poster}
             />
