@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { fetchQueriedMovies } from '../../utils/fetch-api';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import s from './SearchForm.module.css';
 
 const SearchForm = () => {
   const [query, setQuery] = useState(null);
-  const [queryForMovie, setQueryForMovie] = useState(null);
-  const [queriedMovie, setQueriedMovie] = useState(null);
 
-  useEffect(() => {
-    fetchQueriedMovies(queryForMovie).then(queriedMovie =>
-      setQueriedMovie(queriedMovie)
-    );
-  }, [queryForMovie]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = e => {
     const { value } = e.target;
@@ -25,7 +18,7 @@ const SearchForm = () => {
     e.preventDefault();
     const formEl = document.querySelector('form');
 
-    setQueryForMovie(query);
+    navigate({ search: `?query=${query}` }, { state: location.state });
 
     formEl.reset();
 
@@ -49,7 +42,7 @@ const SearchForm = () => {
           Search
         </button>
       </form>
-      <ul className={s.list}>
+      {/* <ul className={s.list}>
         {queriedMovie &&
           queriedMovie.map(el => {
             const linkToEl = '/movie/' + el.id;
@@ -59,13 +52,9 @@ const SearchForm = () => {
               </li>
             );
           })}
-      </ul>
+      </ul> */}
     </>
   );
-};
-
-SearchForm.propTypes = {
-  updateQuery: PropTypes.func,
 };
 
 export default SearchForm;

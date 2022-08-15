@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
+import { NavLink, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { fetchMovieById } from '../../utils/fetch-api';
 import s from './MovieInfo.module.css';
 
@@ -8,31 +7,29 @@ const setActiveLinkClass = ({ isActive }) =>
   isActive ? `${s.navLink} ${s.activeLink}` : s.navLink;
 
 const MovieInfo = () => {
+  const location = useLocation();
   let { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  // const location = useLocation();
-
-  // console.log(location);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieById(movieId).then(movieDetails => setMovieDetails(movieDetails));
   }, [movieId]);
 
-  const linkToCast = '/movie/' + movieId + '/credits';
-  const linkToReviews = '/movie/' + movieId + '/reviews';
-
   return (
     <div className={s.container}>
-      <button type="button" className={s.btn}>
+      <button
+        type="button"
+        className={s.btn}
+        onClick={() => navigate({ state: location.state })}
+      >
         <span>&laquo; Go back</span>
       </button>
       {movieDetails && (
         <div className={s.containerMovie}>
           <div className={s.thumb}>
             <img
-              src={
-                'https://image.tmdb.org/t/p/w500' + movieDetails['poster_path']
-              }
+              src={`https://image.tmdb.org/t/p/w500${movieDetails['poster_path']}`}
               alt={movieDetails.title}
               className={s.poster}
             />
@@ -58,12 +55,20 @@ const MovieInfo = () => {
         <ul className={s.list}>
           Additional information
           <li className={s.item}>
-            <NavLink to={linkToCast} className={setActiveLinkClass}>
+            <NavLink
+              to={`/movie/${movieId}/credits`}
+              className={setActiveLinkClass}
+              state={location.state}
+            >
               Cast
             </NavLink>
           </li>
           <li className={s.item}>
-            <NavLink to={linkToReviews} className={setActiveLinkClass}>
+            <NavLink
+              to={`/movie/${movieId}/reviews`}
+              className={setActiveLinkClass}
+              state={location.state}
+            >
               Reviews
             </NavLink>
           </li>

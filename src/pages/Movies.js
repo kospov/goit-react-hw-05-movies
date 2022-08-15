@@ -1,11 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm.jsx';
+import SearchedMoviesList from '../components/SearchedMoviesList/SearchedMoviesList.jsx';
 
 const Movies = () => {
   return (
     <>
       <SearchForm />
-      <Outlet />
+      <SearchedMoviesList />
     </>
   );
 };

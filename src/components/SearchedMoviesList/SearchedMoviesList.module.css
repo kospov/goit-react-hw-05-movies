@@ -1,0 +1,18 @@
+.list {
+    padding: 20px 40px;
+
+    font-size: 16px;
+}
+
+.item {
+    margin-bottom: 8px;
+    
+    color: dodgerblue;
+    text-decoration: underline;
+}
+
+.item:hover,
+.item:focus {
+    color: #FD779C;
+
+}
