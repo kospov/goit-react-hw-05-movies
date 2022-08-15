@@ -5,7 +5,7 @@ import s from './SearchedMoviesList.module.css';
 
 const SearchedMoviesList = () => {
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [queriedMovie, setQueriedMovie] = useState(null);
 
