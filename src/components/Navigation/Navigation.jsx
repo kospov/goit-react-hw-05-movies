@@ -1,31 +1,21 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 
 const setActiveLinkClass = ({ isActive }) =>
   isActive ? `${s.navLink} ${s.activeLink}` : s.navLink;
 
 const Navigation = () => {
-  const location = useLocation();
-
   return (
     <div className={s.nav}>
       <nav>
         <ul className={s.list}>
           <li className={s.item}>
-            <NavLink
-              to="/"
-              className={setActiveLinkClass}
-              state={location.state}
-            >
+            <NavLink to="/" className={setActiveLinkClass}>
               HOME
             </NavLink>
           </li>
           <li className={s.item}>
-            <NavLink
-              to="movie"
-              className={setActiveLinkClass}
-              state={location.state}
-            >
+            <NavLink to="movie" className={setActiveLinkClass}>
               MOVIE
             </NavLink>
           </li>

@@ -4,10 +4,9 @@ import { fetchQueriedMovies } from '../../utils/fetch-api';
 import s from './SearchedMoviesList.module.css';
 
 const SearchedMoviesList = () => {
-  const location = useLocation();
   const [searchParams] = useSearchParams();
-
   const [queriedMovie, setQueriedMovie] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const queryForMovie = searchParams.get('query');
@@ -25,7 +24,7 @@ const SearchedMoviesList = () => {
         queriedMovie.map(el => {
           return (
             <li className={s.item} key={el.id}>
-              <Link to={'/movie/' + el.id} state={location.state}>
+              <Link to={'/movie/' + el.id} state={location}>
                 {el.title}
               </Link>
             </li>

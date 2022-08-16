@@ -15,8 +15,6 @@ const CastInfo = () => {
     <ul className={s.list}>
       {castDetails &&
         castDetails.map(el => {
-          // const image
-
           return (
             <li className={s.item}>
               <div className={s.thumb}>

@@ -21,7 +21,7 @@ const MovieInfo = () => {
       <button
         type="button"
         className={s.btn}
-        onClick={() => navigate({ state: location.state })}
+        onClick={() => navigate(location.state)}
       >
         <span>&laquo; Go back</span>
       </button>
@@ -57,8 +57,8 @@ const MovieInfo = () => {
           <li className={s.item}>
             <NavLink
               to={`/movie/${movieId}/credits`}
-              className={setActiveLinkClass}
               state={location.state}
+              className={setActiveLinkClass}
             >
               Cast
             </NavLink>
@@ -66,8 +66,8 @@ const MovieInfo = () => {
           <li className={s.item}>
             <NavLink
               to={`/movie/${movieId}/reviews`}
-              className={setActiveLinkClass}
               state={location.state}
+              className={setActiveLinkClass}
             >
               Reviews
             </NavLink>
