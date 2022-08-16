@@ -21,7 +21,7 @@ const CastInfo = () => {
             <li className={s.item} key={el.id}>
               <div className={s.thumb}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${el['profile_path']}`}
+                  src={`https://image.tmdb.org/t/p/w500/${el['profile_path']}`}
                   alt={el.name}
                   className={s.poster}
                 />

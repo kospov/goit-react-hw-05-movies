@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { NavLink, useParams, useLocation, useNavigate } from 'react-router-dom';
-import { fetchMovieById } from '../../utils/fetch-api';
+// import { fetchMovieById } from '../../utils/fetch-api';
 import s from './MovieInfo.module.css';
 
 const setActiveLinkClass = ({ isActive }) =>
   isActive ? `${s.navLink} ${s.activeLink}` : s.navLink;
 
-const MovieInfo = () => {
+const MovieInfo = ({ movieDetails }) => {
   const location = useLocation();
   let { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
+  // const [movieDetails, setMovieDetails] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchMovieById(movieId)
-      .then(movieDetails => setMovieDetails(movieDetails))
-      .catch(err => console.log(err));
-  }, [movieId]);
+  // useEffect(() => {
+  //   fetchMovieById(movieId)
+  //     .then(movieDetails => setMovieDetails(movieDetails))
+  //     .catch(err => console.log(err));
+  // }, [movieId]);
 
   return (
     <div className={s.container}>
