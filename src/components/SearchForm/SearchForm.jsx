@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import s from './SearchForm.module.css';
 
 const SearchForm = () => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    setQuery(query);
+  }, [query]);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleChange = e => {
     const { value } = e.target;
@@ -16,17 +19,14 @@ const SearchForm = () => {
 
   const handleSubmitClick = e => {
     e.preventDefault();
-    const formEl = document.querySelector('form');
 
-    navigate({ search: `?query=${query}` }, { state: location.state });
-
-    formEl.reset();
+    navigate({ search: `?query=${query}` });
 
     reset();
   };
 
   const reset = () => {
-    setQuery(null);
+    setQuery('');
   };
 
   return (
@@ -43,17 +43,6 @@ const SearchForm = () => {
           Search
         </button>
       </form>
-      {/* <ul className={s.list}>
-        {queriedMovie &&
-          queriedMovie.map(el => {
-            const linkToEl = '/movie/' + el.id;
-            return (
-              <li className={s.item} key={el.id}>
-                <Link to={linkToEl}>{el.title}</Link>
-              </li>
-            );
-          })}
-      </ul> */}
     </>
   );
 };

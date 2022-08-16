@@ -8,7 +8,9 @@ const CastInfo = () => {
   const [castDetails, setCastDetails] = useState([]);
 
   useEffect(() => {
-    fetchCastForMovie(movieId).then(castDetails => setCastDetails(castDetails));
+    fetchCastForMovie(movieId)
+      .then(castDetails => setCastDetails(castDetails))
+      .catch(err => console.log(err));
   }, [movieId]);
 
   return (
@@ -16,10 +18,10 @@ const CastInfo = () => {
       {castDetails &&
         castDetails.map(el => {
           return (
-            <li className={s.item}>
+            <li className={s.item} key={el.id}>
               <div className={s.thumb}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${el['profile_path']}`}
+                  src={`https://image.tmdb.org/t/p/w500/${el['profile_path']}`}
                   alt={el.name}
                   className={s.poster}
                 />

@@ -8,9 +8,9 @@ const ReviewsInfo = () => {
   const [reviewsDetails, setReviewsDetails] = useState([]);
 
   useEffect(() => {
-    fetchReviewsForMovie(movieId).then(reviewsDetails =>
-      setReviewsDetails(reviewsDetails)
-    );
+    fetchReviewsForMovie(movieId)
+      .then(reviewsDetails => setReviewsDetails(reviewsDetails))
+      .catch(err => console.log(err));
   }, [movieId]);
 
   return (
@@ -18,7 +18,7 @@ const ReviewsInfo = () => {
       {reviewsDetails.length !== 0 ? (
         reviewsDetails.map(el => {
           return (
-            <li className={s.item}>
+            <li className={s.item} key={el.id}>
               <h2 className={s.title}>Author: {el.author}</h2>
               <p className={s.content}>{el.content}</p>
             </li>

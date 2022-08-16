@@ -13,7 +13,9 @@ const MovieInfo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchMovieById(movieId).then(movieDetails => setMovieDetails(movieDetails));
+    fetchMovieById(movieId)
+      .then(movieDetails => setMovieDetails(movieDetails))
+      .catch(err => console.log(err));
   }, [movieId]);
 
   return (
@@ -29,7 +31,7 @@ const MovieInfo = () => {
         <div className={s.containerMovie}>
           <div className={s.thumb}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${movieDetails['poster_path']}`}
+              src={`https://image.tmdb.org/t/p/w500/${movieDetails['poster_path']}`}
               alt={movieDetails.title}
               className={s.poster}
             />

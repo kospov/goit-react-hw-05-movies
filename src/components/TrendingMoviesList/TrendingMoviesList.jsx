@@ -1,15 +1,20 @@
-import TrendingMoviesItem from '../TrendingMoviesItem/TrendingMoviesItem';
+import PropTypes from 'prop-types';
+import MovieItem from 'components/MovieItem/MovieItem';
 import s from './TrendingMoviesList.module.css';
 
-const TrendingMoviesList = () => {
+const TrendingMoviesList = ({ trendMovies }) => {
   return (
-    <div>
+    <>
       <h2 className={s.title}>Trending today</h2>
       <ul className={s.list}>
-        <TrendingMoviesItem />
+        <MovieItem searchedMovies={trendMovies} />
       </ul>
-    </div>
+    </>
   );
+};
+
+TrendingMoviesList.propTypes = {
+  trendMovies: PropTypes.array,
 };
 
 export default TrendingMoviesList;
