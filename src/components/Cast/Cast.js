@@ -1,4 +1,4 @@
-import CastInfo from '../components/CastInfo/CastInfo.jsx';
+import CastInfo from '../CastInfo/CastInfo.jsx';
 
 const Cast = () => {
   return (

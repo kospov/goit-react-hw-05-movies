@@ -37,6 +37,7 @@ const SearchForm = () => {
           placeholder="Search movie"
           className={s.input}
           onChange={handleChange}
+          value={query}
         ></input>
         <button type="submit" className={s.btn}>
           Search

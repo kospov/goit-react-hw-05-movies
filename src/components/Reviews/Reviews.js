@@ -1,4 +1,4 @@
-import ReviewsInfo from '../components/ReviewsInfo/ReviewsInfo.jsx';
+import ReviewsInfo from '../ReviewsInfo/ReviewsInfo.jsx';
 
 const Reviews = () => {
   return <ReviewsInfo />;
